@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using v3ga.Infrastructure;
 
 namespace v3ga
 {
@@ -27,6 +29,8 @@ namespace v3ga
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddDbContext<VegaDbContext>(x => x.UseSqlServer("..."));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
