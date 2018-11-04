@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -6,6 +7,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Protocols;
 using v3ga.Infrastructure;
 
 namespace v3ga
@@ -30,7 +32,8 @@ namespace v3ga
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddDbContext<VegaDbContext>(x => x.UseSqlServer("..."));
+            var connectionString = Configuration.GetConnectionString("Default");
+            services.AddDbContext<VegaDbContext>(x => x.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
