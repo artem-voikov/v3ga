@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
+using v3ga.Models;
 
 namespace v3ga.Infrastructure
 {
@@ -11,5 +12,6 @@ namespace v3ga.Infrastructure
         }
 
 
+        public DbSet<Make> Makes { get; set; }
     }
 }

@@ -32,13 +32,22 @@ namespace v3ga
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            var connectionString = Configuration.GetConnectionString("Default");
-            services.AddDbContext<VegaDbContext>(x => x.UseSqlServer(connectionString));
+            // var connectionString = Configuration.GetConnectionString("Default");
+            services .AddDbContext<VegaDbContext>(x => x.UseSqlServer(Configuration["ConnectionStrings:Default"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", false)
+                // .AddJsonFile($"appsettings.{env.EnvironmentName}.json")
+                .AddEnvironmentVariables();
+            
+
+            // Configuration = builder.Build();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

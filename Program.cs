@@ -18,7 +18,12 @@ namespace v3ga
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            WebHost
+                .CreateDefaultBuilder(args)
+                // .ConfigureAppConfiguration((hostingContext, config)=> {
+                //     config = 
+                // })
+                .UseStartup<Startup>()
+                .UseWebRoot("wwwroot");
     }
 }
