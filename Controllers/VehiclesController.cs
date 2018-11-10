@@ -23,9 +23,19 @@ namespace v3ga.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var model = await context.Models.FindAsync(vehicleResource.ModelId);
+            if(model == null)
+            {
+                ModelState.AddModelError("ModelId", "Invalid modeilId");
+                return BadRequest(ModelState);
+            }
+
             var vehicle = mapper.Map<VehicleResource, Vehicle>(vehicleResource);
             vehicle.LastUpdate = DateTime.UtcNow;
-            
+
             try
             {
                 context.Vehicles.Add(vehicle);
@@ -36,7 +46,7 @@ namespace v3ga.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex);
             }
         }
     }
