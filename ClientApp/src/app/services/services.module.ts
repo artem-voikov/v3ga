@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MakeService } from './make.service';
+import { VehicleService } from './make.service';
 import { HttpModule } from '@angular/http';
 
 @NgModule({
@@ -9,6 +9,6 @@ import { HttpModule } from '@angular/http';
     HttpModule
   ],
   declarations: [],
-  providers: [MakeService]
+  providers: [VehicleService]
 })
 export class ServicesModule { }

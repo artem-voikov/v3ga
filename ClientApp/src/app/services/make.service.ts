@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class MakeService {
+export class VehicleService {
   /**
    *
    */
@@ -11,5 +11,10 @@ export class MakeService {
 
   getMakes() {
     return this.http.get('/api/makes').map(res => res.json());
+  }
+
+  getFeatures() {
+    return this.http.get('/api/features')
+      .map(x => x.json());
   }
 }

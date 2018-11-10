@@ -2,16 +2,20 @@ using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using v3ga.Models;
 
-namespace v3ga.Infrastructure
-{
-    public class VegaDbContext : DbContext
-    {
-        public VegaDbContext(DbContextOptions<VegaDbContext> options) 
-            : base(options)
+namespace v3ga.Infrastructure {
+
+    public class VegaDbContext : DbContext {
+        public DbSet<Make> Makes { get; set; }
+        public DbSet<Feature> Features { get; set; }
+
+        public DbSet<Vehicle> Vehicles {get;set;}
+
+        public VegaDbContext (DbContextOptions<VegaDbContext> options) : base (options) { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<VehicleFeature>().HasKey(vf => new {vf.VehicleId, vf.FeatureId});
         }
 
-
-        public DbSet<Make> Makes { get; set; }
     }
 }

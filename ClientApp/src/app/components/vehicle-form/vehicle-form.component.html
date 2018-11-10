@@ -1,9 +1,9 @@
 <h1>New vehicle</h1>
-<form >
+<form>
   <h2></h2>
   <div class="form-group">
     <label for="make">Make</label>
-    <select name="" id="make" class="form-control" (change)="onMakeChange()" [(ngModel)]="vehicle.Make">
+    <select name="vehicle" id="vehicle" class="form-control" (change)="onMakeChange()" [(ngModel)]="makeId">
       <option value=""></option>
       <option *ngFor="let m of makes" value={{m.id}}>{{m.name}}</option>
     </select>
@@ -11,8 +11,28 @@
   <h2></h2>
   <div class="form-group">
     <label for="" id="model">Model</label>
-    <select name="" id="model" class="form-control"></select>
+    <select name="" id="model" class="form-control">
+      <option *ngFor="let m of models" value="{{m.id}}">{{m.name}}</option>
+    </select>
   </div>
+
+  <label for="registered" class="radio-inline">
+    <input name="isRegistered" type="radio" value="true" id="registered"> Yes
+  </label>
+  <label for="notregistered" class="radio-inline">
+    <input name="isRegistered" type="radio" value="false" id="notregistered"> No
+  </label>
+
+  <h2>Features</h2>
+  <div class="checkbox" *ngFor="let f of features">
+    <label for="feature{{f.id}}">
+      <input type="checkbox" id="feature{{f.id}}" value={{f.id}}> {{f.name}}
+    </label>
+  </div>
+
+  <h2>Contact</h2>
+  <div class="form-group"><label for="contactName">Name</label><input id="contactName" type="text" class="form-control"></div>
+  <div class="form-group"><label for="contatctPhone">Phone</label><input id="contatctPhone" type="text" class="form-control"></div>
+  <div class="form-group"><label for="contactEmail">Email</label><input id="contactEmail" type="text" class="form-control"></div>
+  <button class="btn btn-primary">Save</button>
 </form>
-
-
