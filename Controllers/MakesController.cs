@@ -25,12 +25,12 @@ namespace v3ga.Controllers {
         }
 
         [HttpGet ("/api/features")]
-        public Task<IEnumerable<FeatureResource>> GetFeatures () {
-            var result = new List<FeatureResource> ();
-            result.Add (new FeatureResource { Id = 1, Name = "Feature1" });
-            result.Add (new FeatureResource { Id = 2, Name = "Feature2" });
-            result.Add (new FeatureResource { Id = 3, Name = "Feature3" });
-            return Task.FromResult((IEnumerable<FeatureResource>)result);
+        public Task<IEnumerable<KeyValuePairResource>> GetFeatures () {
+            var result = new List<KeyValuePairResource> ();
+            result.Add (new KeyValuePairResource { Id = 1, Name = "Feature1" });
+            result.Add (new KeyValuePairResource { Id = 2, Name = "Feature2" });
+            result.Add (new KeyValuePairResource { Id = 3, Name = "Feature3" });
+            return Task.FromResult((IEnumerable<KeyValuePairResource>)result);
         }
     }
 }

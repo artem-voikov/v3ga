@@ -2,18 +2,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
-namespace v3ga.Controllers.Resources
-{
-    public class MakeResource
-    {
-    
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public ICollection<ModelResource> Models { get; set; }
+namespace v3ga.Controllers.Resources {
+    public class MakeResource : KeyValuePairResource {
 
-        public MakeResource()
-        {
-            Models = new Collection<ModelResource>();
-        }
+        public ICollection<KeyValuePairResource> Models { get; set; }= new Collection<KeyValuePairResource> ();
+
     }
 }

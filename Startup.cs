@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Protocols;
 using v3ga.Infrastructure;
+using v3ga.Persistence;
 
 namespace v3ga
 {
@@ -26,6 +27,8 @@ namespace v3ga
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper();
+            services.AddScoped<IVehicleRepository,VehicleRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
