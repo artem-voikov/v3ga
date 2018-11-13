@@ -55,11 +55,12 @@ namespace v3ga.Controllers {
             try {
                 await unitOfWork.CompleteAsync();
 
+                vehicle = await vehicleRepository.GetVehicle(vehicle.Id);
                 var result = mapper.Map<Vehicle, VehicleResource> (vehicle);
                 return Ok (result);
             } catch (Exception ex) {
                 return BadRequest (ex);
-            }
+            } 
         }
 
         [HttpDelete ("{id}")]
