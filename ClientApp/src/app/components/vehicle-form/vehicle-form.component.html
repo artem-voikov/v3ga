@@ -1,9 +1,11 @@
 <h1>New vehicle</h1>
-<form>
+
+{{vehicle|json}}
+<form vehicle="ngForm">
   <h2></h2>
   <div class="form-group">
     <label for="make">Make</label>
-    <select name="vehicle" id="vehicle" class="form-control" (change)="onMakeChange()" [(ngModel)]="makeId">
+    <select name="make" id="make" class="form-control" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId">
       <option value=""></option>
       <option *ngFor="let m of makes" value={{m.id}}>{{m.name}}</option>
     </select>
@@ -11,7 +13,7 @@
   <h2></h2>
   <div class="form-group">
     <label for="" id="model">Model</label>
-    <select name="" id="model" class="form-control">
+    <select name="" id="model" class="form-control" [(ngModel)]="vehicle.modelId">
       <option *ngFor="let m of models" value="{{m.id}}">{{m.name}}</option>
     </select>
   </div>

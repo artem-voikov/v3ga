@@ -11,6 +11,7 @@ export class VehicleFormComponent implements OnInit {
   models: any[];
   makeId: any = {};
   features: any;
+  vehicle: any;
 
   constructor(private vehicleService: VehicleService) {}
 
@@ -24,7 +25,7 @@ export class VehicleFormComponent implements OnInit {
 
   onMakeChange() {
     // tslint:disable-next-line:triple-equals
-    const selectedMake = this.makes.find(x => x.id == this.makeId);
+    const selectedMake = this.makes.find(x => x.id == this.vehicle.makeId);
     this.models = selectedMake ? selectedMake.models : [];
   }
 }
