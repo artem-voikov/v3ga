@@ -1,9 +1,12 @@
 <h1>New vehicle</h1>
+<p>
+  {{vehicle| json}}
+</p>
 <form>
   <h2></h2>
   <div class="form-group">
     <label for="make">Make</label>
-    <select name="vehicle" id="vehicle" class="form-control" (change)="onMakeChange()" [(ngModel)]="makeId">
+    <select name="makeId" id="makeId" class="form-control" (change)="onMakeChange()" [(ngModel)]="vehicle.makeId">
       <option value=""></option>
       <option *ngFor="let m of makes" value={{m.id}}>{{m.name}}</option>
     </select>
@@ -11,22 +14,22 @@
   <h2></h2>
   <div class="form-group">
     <label for="" id="model">Model</label>
-    <select name="" id="model" class="form-control">
+    <select name="modelId" id="modelId" class="form-control" [(ngModel)]="vehicle.modelId">
       <option *ngFor="let m of models" value="{{m.id}}">{{m.name}}</option>
     </select>
   </div>
 
   <label for="registered" class="radio-inline">
-    <input name="isRegistered" type="radio" value="true" id="registered"> Yes
+    <input name="isRegistered" type="radio" value="true" id="registered" [(ngModel)]="vehicle.isRegistered"> Yes
   </label>
   <label for="notregistered" class="radio-inline">
-    <input name="isRegistered" type="radio" value="false" id="notregistered"> No
+    <input name="isRegistered" type="radio" value="false" id="notregistered" [(ngModel)]="vehicle.isRegistered"> No
   </label>
 
   <h2>Features</h2>
-  <div class="checkbox" *ngFor="let f of features">
+  <div class="checkbox" *ngFor="let f of features; let i = index">
     <label for="feature{{f.id}}">
-      <input type="checkbox" id="feature{{f.id}}" value={{f.id}}> {{f.name}}
+      <input type="checkbox" id="feature{{f.id}}" value={{f.id}} [(ngModel)]="vehicle.features[i]" > {{f.name}}
     </label>
   </div>
 
