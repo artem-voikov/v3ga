@@ -12,7 +12,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ComponentsModule } from './components/components.module';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
-
+import { ToastyModule } from 'ng2-toasty';
 
 @NgModule({
   declarations: [
@@ -28,6 +28,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
     FormsModule,
     ComponentsModule,
     ServicesModule,
+    ToastyModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'vehicles/new', component: VehicleFormComponent },
