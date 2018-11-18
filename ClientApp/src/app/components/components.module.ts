@@ -6,6 +6,6 @@ import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 @NgModule({
   imports: [CommonModule, FormsModule],
   declarations: [VehicleFormComponent],
-  exports: [VehicleFormComponent]
+  exports: [VehicleFormComponent],
 })
 export class ComponentsModule {}
