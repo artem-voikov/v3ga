@@ -1,4 +1,4 @@
-import { AppErrorHandler } from './app-errorhandler';
+import { AppErrorHandler } from './AppErrorHandler';
 import { ServicesModule } from './services/services.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';

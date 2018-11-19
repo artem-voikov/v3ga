@@ -1,7 +1,8 @@
 import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
+import { AppErrorHandler } from '../AppErrorHandler';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
