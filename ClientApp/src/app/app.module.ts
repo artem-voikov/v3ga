@@ -1,7 +1,8 @@
+import { browser } from 'protractor';
 import { AppErrorHandler } from './AppErrorHandler';
 import { ServicesModule } from './services/services.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -14,6 +15,12 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ComponentsModule } from './components/components.module';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { ToastyModule } from 'ng2-toasty';
+
+import * as Sentry from '@sentry/browser';
+
+Sentry.init({
+  dsn: 'https://2ea8f4977db64fb9bbd416a807332f09@sentry.io/1327135'
+});
 
 @NgModule({
   declarations: [
@@ -33,6 +40,7 @@ import { ToastyModule } from 'ng2-toasty';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'vehicles/new', component: VehicleFormComponent },
+      { path: 'vehicles/:id', component: VehicleFormComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])

@@ -18,7 +18,7 @@ namespace v3ga.Controllers {
         public VehiclesController (IMapper mapper, IVehicleRepository vehicleRepository, IUnitOfWork unitOfWork) {
             this.unitOfWork = unitOfWork;
             this.vehicleRepository = vehicleRepository;
-            this.mapper = mapper;
+            this.mapper = mapper; 
         }
 
         [HttpPost]
