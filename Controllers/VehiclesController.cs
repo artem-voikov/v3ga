@@ -23,7 +23,6 @@ namespace v3ga.Controllers {
 
         [HttpPost]
         public async Task<IActionResult> CreateVehicle ([FromBody] SaveVehicleResource vehicleResource) {
-            throw new Exception("aa");
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
 
@@ -43,7 +42,7 @@ namespace v3ga.Controllers {
             }
         }
 
-        [HttpPut ("{id}")]
+        [HttpPut ("/{id}")]
         public async Task<IActionResult> UpdateVehicle (int id, [FromBody] SaveVehicleResource vehicleResource) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -70,14 +69,14 @@ namespace v3ga.Controllers {
             if (vehicle == null)
                 return NotFound ();
 
-            vehicleRepository.Remove (vehicle);
+        vehicleRepository.Remove (vehicle);
             await unitOfWork.CompleteAsync();
 
             return Ok (id);
         }
 
         [HttpGet ("{id}")]
-        public async Task<IActionResult> GetVehicle (int id) {
+        public async Task<IActionResult> Get (int id) {
             var vehicle = await this.vehicleRepository.GetVehicle (id);
 
             if (vehicle == null)
