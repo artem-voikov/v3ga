@@ -42,7 +42,7 @@ namespace v3ga.Controllers {
             }
         }
 
-        [HttpPut ("/{id}")]
+        [HttpPut ("{id}")]
         public async Task<IActionResult> UpdateVehicle (int id, [FromBody] SaveVehicleResource vehicleResource) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);

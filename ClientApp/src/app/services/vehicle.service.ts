@@ -1,9 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { SaveVehicle } from '../models/Vehicle';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class VehicleService {
+
+  delete(id: number): any {
+    return this.http.delete('/api/vehicles/' + id).map(x => x.json());
+  }
+
+  updateVehicle(vehicle: SaveVehicle): any {
+    return this.http
+      .put('/api/vehicles/' + vehicle.id, vehicle)
+      .map(x => x.json());
+  }
   constructor(private http: Http) {}
 
   getMakes() {
