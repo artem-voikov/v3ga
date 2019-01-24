@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using v3ga.Infrastructure;
 using v3ga.Models;
+using System.Linq;
+using System.Collections;
 
 namespace v3ga.Persistence {
 
@@ -9,6 +12,14 @@ namespace v3ga.Persistence {
         private VegaDbContext context;
         public VehicleRepository (VegaDbContext context) {
             this.context = context;
+        }
+
+        public IEnumerable<Vehicle> GetVehicles(PagePref page)
+        {
+            var query = context.Vehicles.Skip(page.PageLength*page.PageNumber).Take(page.PageLength);
+
+
+            return query.ToList();
         }
 
         public async Task<Vehicle> GetVehicle (int id, bool includeRelated = true) {

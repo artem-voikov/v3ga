@@ -75,6 +75,7 @@ namespace v3ga.Controllers {
             return Ok (id);
         }
 
+
         [HttpGet ("{id}")]
         public async Task<IActionResult> Get (int id) {
             var vehicle = await this.vehicleRepository.GetVehicle (id);
@@ -86,6 +87,13 @@ namespace v3ga.Controllers {
 
             return Ok (vehicleResource);
 
+        }
+
+        public async Task<IActionResult> Get(PagePref page)
+        {
+            var vehicles = this.vehicleRepository.GetVehicles(page);
+
+            return Ok(vehicles);
         }
     }
 }

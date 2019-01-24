@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { SaveVehicle } from '../models/Vehicle';
-import { Observable } from 'rxjs/Observable';
+import { Page } from '../models/Page';
 
 @Injectable()
 export class VehicleService {
-
   delete(id: number): any {
     return this.http.delete('/api/vehicles/' + id).map(x => x.json());
   }
@@ -32,5 +31,11 @@ export class VehicleService {
 
   getVehicle(id) {
     return this.http.get('/api/vehicles/' + id).map(x => x.json());
+  }
+
+  getVehicles(page: Page): any {
+    // tslint:disable-next-line:max-line-length
+    const url = `/api/vehicles?pagenumber=${page.pageNumber}&pageLength=${page.pageLength}&sorting=${page.sorting}&filtering=${page.filtering}`;
+    return this.http.get(url).map(x => x.json());
   }
 }

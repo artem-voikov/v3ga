@@ -17,6 +17,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
 import { ToastyModule } from 'ng2-toasty';
 
 import * as Sentry from '@sentry/browser';
+import { VehiclesOverviewComponent } from './components/vehicles-overview/vehicles-overview.component';
 
 Sentry.init({
   dsn: 'https://2ea8f4977db64fb9bbd416a807332f09@sentry.io/1327135'
@@ -39,6 +40,7 @@ Sentry.init({
     ToastyModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'vehicles', component: VehiclesOverviewComponent },
       { path: 'vehicles/new', component: VehicleFormComponent },
       { path: 'vehicles/:id', component: VehicleFormComponent },
       { path: 'counter', component: CounterComponent },

@@ -1,0 +1,29 @@
+
+<a [routerLink]="['/vehicles/new']" routerLinkActive="router-link-active" ><button class="btn btn-primary" >new vehicle</button></a>
+<p>
+  vehicles-overview works!
+</p>
+
+<table *ngIf="vehicles" >
+  <thead>
+    <tr>
+    <th>
+      id
+    </th>
+    <th>
+      Make
+    </th>
+    <th>Model</th>
+    <th>Contact name</th>
+    <th>View</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let v of vehicles">
+      <td>v.id</td>
+      <td>v.Make.name</td>
+      <td>v.id</td>
+      <td>v.id</td>
+      <td>v.id</td>
+    </tr>>
+</table>
