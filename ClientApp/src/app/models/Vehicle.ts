@@ -34,3 +34,14 @@ export interface SaveVehicle {
   features: number[];
   contact: Contact;
 }
+
+export interface MyVehicle {
+  id: number;
+  modelId: number;
+  model: KeyValuePair;
+  isRegistered: boolean;
+  contactName: string;
+  contactEmail: string;
+  contactPhone: string;
+  lastUpdate: Date;
+}

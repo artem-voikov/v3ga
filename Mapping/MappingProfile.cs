@@ -7,6 +7,9 @@ using v3ga.Models;
 namespace v3ga.Mapping {
     public class MappingProfile : Profile {
         public MappingProfile () {
+
+            CreateMap<FilterResource,Filter>();
+
             //Domain to API Resource
             CreateMap<Make, MakeResource> ();
             CreateMap<Model, KeyValuePairResource> ();

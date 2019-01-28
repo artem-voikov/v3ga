@@ -39,10 +39,11 @@ Sentry.init({
     ServicesModule,
     ToastyModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
       { path: 'vehicles', component: VehiclesOverviewComponent },
       { path: 'vehicles/new', component: VehicleFormComponent },
       { path: 'vehicles/:id', component: VehicleFormComponent },
+      { path: 'home', component: HomeComponent},
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])

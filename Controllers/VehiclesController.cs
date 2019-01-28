@@ -1,10 +1,14 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using v3ga.Controllers.Resources;
 using v3ga.Infrastructure;
+using v3ga.Infrastructure.Extensions;
 using v3ga.Models;
 using v3ga.Persistence;
 
@@ -91,9 +95,21 @@ namespace v3ga.Controllers {
 
         public async Task<IActionResult> Get(PagePref page)
         {
-            var vehicles = this.vehicleRepository.GetVehicles(page);
+            var vehicles = await this.vehicleRepository.GetVehicles(page);
 
-            return Ok(vehicles);
+            var response = mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleResource>>(vehicles);
+
+            return Ok(response );
+        }
+
+        [HttpGet("filtered")]
+        public async Task<IActionResult> FilteredVehicles(FilterResource filterResource)
+        {
+            var filter = mapper.Map<FilterResource, Filter>(filterResource);
+
+            var response = await this.vehicleRepository.GetVehicles(filter);
+
+            return Ok(response);
         }
     }
 }

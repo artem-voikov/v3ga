@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using v3ga.Controllers.Resources;
 using v3ga.Models;
 
 namespace v3ga.Persistence
@@ -8,8 +9,12 @@ namespace v3ga.Persistence
     {
          Task<Vehicle> GetVehicle (int id, bool includeRelated = true);
 
-         IEnumerable<Vehicle> GetVehicles(PagePref page);
+         Task<List<Vehicle>> GetVehicles(PagePref page);
+
+         Task<List<Vehicle>> GetVehicles(Filter filter);
          void Add(Vehicle vehicle);
          void Remove(Vehicle vehicle);
+
+
     }
 }

@@ -5,10 +5,12 @@ import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 import { AppErrorHandler } from '../AppErrorHandler';
 import { VehiclesOverviewComponent } from './vehicles-overview/vehicles-overview.component';
 import { RouterModule, Route } from '@angular/router';
+import { PhotoViewerComponent } from './photo-viewer/photo-viewer.component';
+import { VehiclePreferencesComponent } from './vehicle-preferences/vehicle-preferences.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, RouterModule],
-  declarations: [VehicleFormComponent, VehiclesOverviewComponent],
+  declarations: [VehicleFormComponent, VehiclesOverviewComponent, PhotoViewerComponent, VehiclePreferencesComponent],
   exports: [VehicleFormComponent],
 })
 export class ComponentsModule {}
