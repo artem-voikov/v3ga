@@ -1,5 +1,5 @@
 import { browser } from 'protractor';
-import { AppErrorHandler } from './AppErrorHandler';
+// import { AppErrorHandler } from './AppErrorHandler';
 import { ServicesModule } from './services/services.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler, Injectable } from '@angular/core';
@@ -13,11 +13,10 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ComponentsModule } from './components/components.module';
-import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { ToastyModule } from 'ng2-toasty';
 
 import * as Sentry from '@sentry/browser';
-import { VehiclesOverviewComponent } from './components/vehicles-overview/vehicles-overview.component';
+import { appRoutes } from './app-routes';
 
 Sentry.init({
   dsn: 'https://2ea8f4977db64fb9bbd416a807332f09@sentry.io/1327135'
@@ -38,19 +37,11 @@ Sentry.init({
     ComponentsModule,
     ServicesModule,
     ToastyModule.forRoot(),
-    RouterModule.forRoot([
-      { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
-      { path: 'vehicles', component: VehiclesOverviewComponent },
-      { path: 'vehicles/new', component: VehicleFormComponent },
-      { path: 'vehicles/:id', component: VehicleFormComponent },
-      { path: 'home', component: HomeComponent},
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [
-    { provide: ErrorHandler, useClass: AppErrorHandler }
-  ],
+  // providers: [
+  //   { provide: ErrorHandler, useClass: AppErrorHandler }
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
