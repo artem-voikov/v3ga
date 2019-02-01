@@ -21,6 +21,6 @@ import { VehicleRoutingModule } from './/vehicle-routing.module';
     VehicleDetailsHullComponent,
     VehicleDetailsComponent,
     VehiclePhotoEditingComponent],
-  exports: [VehicleFormComponent],
+  exports: [VehicleFormComponent, VehicleRoutingModule],
 })
 export class ComponentsModule {}
