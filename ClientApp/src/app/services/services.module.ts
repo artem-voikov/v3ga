@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { VehicleService } from './vehicle.service';
 import { HttpModule } from '@angular/http';
 import { MyHelper } from './myHelper';
+import { VehicleState } from './VehicleState';
 
 @NgModule({
   imports: [
@@ -10,6 +11,6 @@ import { MyHelper } from './myHelper';
     HttpModule
   ],
   declarations: [],
-  providers: [VehicleService, MyHelper]
+  providers: [VehicleService, MyHelper, VehicleState]
 })
 export class ServicesModule { }

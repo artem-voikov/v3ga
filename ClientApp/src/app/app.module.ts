@@ -40,7 +40,7 @@ Sentry.init({
     ComponentsModule,
     ServicesModule,
     ToastyModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler }

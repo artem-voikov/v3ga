@@ -1,10 +1,11 @@
 <p>
-  vehicle-details-hull works!
+  vehicle-details-hull works! {{identifer}}
 </p>
-<nav>
-  <a routerLink="details" routerLinkActive="router-link-active">details</a>
-  <a routerLink="photo" routerLinkActive="router-link-active">photo</a>
-  <a routerLink="edit" routerLinkActive="router-link-active">edit</a>
-</nav>
-{{identifer}}
+
+<ul class="nav nav-tabs">
+  <li class="nav-item"><a routerLink="details" routerLinkActive="nav-link active"  [routerLinkActiveOptions]="{exact: true}" href="#">details</a></li>
+  <li class="nav-item"><a routerLink="photo" routerLinkActive="nav-link active" href="#">photo</a></li>
+  <li class="nav-item"><a routerLink="edit" routerLinkActive="nav-link active" href="#">edit</a></li>
+  
+</ul>
 <router-outlet></router-outlet>

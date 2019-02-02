@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Route, ActivatedRoute } from '@angular/router';
+import { VehicleService } from '../../services/vehicle.service';
+import { Vehicle } from '../../models/Vehicle';
+import { VehicleState } from '../../services/VehicleState';
 
 @Component({
   selector: 'app-vehicle-details-hull',
@@ -7,18 +10,17 @@ import { Router, Route, ActivatedRoute } from '@angular/router';
   styleUrls: ['./vehicle-details-hull.component.css']
 })
 export class VehicleDetailsHullComponent implements OnInit {
-  identifer: number;
+  identifer: any;
 
-  thing: any = {};
+  vehicle: Vehicle;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
-    route.params.subscribe(x => {
-      this.identifer = this.route.snapshot.paramMap['id'];
-      console.log(this.identifer);
-    });
+  constructor(private router: Router, private route: ActivatedRoute, private vehicleService: VehicleService, private vehicleState: VehicleState) {
+    this.route.paramMap
+      .subscribe(x=> {
+        const id = this.identifer = x.get('id');
 
-
-    this.route.queryParams.subscribe(x => (this.thing = x));
+        this.vehicleState.vehicle = vehicleService.getVehicle(id);
+      });
   }
 
   ngOnInit() {}

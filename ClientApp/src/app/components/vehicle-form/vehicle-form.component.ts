@@ -6,6 +6,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import { SaveVehicle, Vehicle, Contact } from '../../models/Vehicle';
+import { VehicleState } from '../../services/VehicleState';
 
 @Component({
   selector: 'app-vehicle-form',
@@ -34,7 +35,8 @@ export class VehicleFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private vehicleService: VehicleService,
-    private toasyService: ToastyService
+    private toasyService: ToastyService,
+    private vehicleState: VehicleState
   ) {
     route.params.subscribe(x => {
       console.log(x);
