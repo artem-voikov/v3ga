@@ -6,4 +6,5 @@ import { Observable } from 'rxjs';
 export class VehicleState {
     currentVehicle: Vehicle;
     vehicle: Observable<Vehicle>;
+    vehicleId: number;
 }
