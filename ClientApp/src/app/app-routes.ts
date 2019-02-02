@@ -9,7 +9,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 export const appRoutes: Routes = [
   { path: 'vehicles', component: VehiclesOverviewComponent },
   { path: 'vehicles/new', component: VehicleFormComponent },
-  { path: 'vehicle', loadChildren: './components/vehicle-routing.module#VehicleRoutingModule', pathMatch: 'full'},
+  { path: 'vehicle', loadChildren: './components/vehicle-routing.module#VehicleRoutingModule'},
   { path: 'home', component: HomeComponent},
   { path: 'counter', component: CounterComponent },
   { path: 'fetch-data', component: FetchDataComponent },

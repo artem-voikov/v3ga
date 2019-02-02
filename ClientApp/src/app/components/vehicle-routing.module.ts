@@ -7,10 +7,10 @@ import { VehiclePhotoEditingComponent } from './vehicle-photo-editing/vehicle-ph
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 
 const vehicleRoute: Routes = [
-  { path: 'vehicle', component: VehicleDetailsHullComponent, children: [
-    { path: 'vehicle/:id/photo', component: VehiclePhotoEditingComponent },
-    { path: 'vehicle/:id', component: VehicleDetailsComponent},
-    { path: 'vehicle/:id/edit', component: VehicleFormComponent }
+  { path: 'vehicle/:id', component: VehicleDetailsHullComponent, children: [
+    { path: 'photo', component: VehiclePhotoEditingComponent },
+    { path: 'edit', component: VehicleFormComponent },
+    { path: 'details', component: VehicleDetailsComponent},
   ]},
 ];
 

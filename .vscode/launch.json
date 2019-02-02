@@ -8,8 +8,15 @@
             "type": "chrome",
             "request": "attach",
             "name": "Attach to Chrome",
-            "port": 5001,
+            "url": "http://localhost:5000",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome",
+            "url": "http://localhost:5000",
+            "webRoot": "${workspaceRoot}/wwwroot"
         },
         {
             "name": ".NET Core Launch (web)",
