@@ -5,6 +5,7 @@ import { VehicleService } from "../../services/vehicle.service";
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { VehicleState } from '../../services/VehicleState';
+import { PhotoService } from '../../services/photo.service';
 
 @Component({
   selector: "app-vehicle-details",
@@ -14,12 +15,14 @@ import { VehicleState } from '../../services/VehicleState';
 export class VehicleDetailsComponent implements OnInit {
   id: number;
   vehicle: Vehicle;
+  photos: any = [];
 
   constructor(
     private route: ActivatedRoute,
     private vehicleService: VehicleService,
     private router: Router,
-    private vehicleState: VehicleState
+    private vehicleState: VehicleState,
+    private photoService: PhotoService
   ) {
     // route.params.subscribe(x => console.log(x));
 
@@ -27,6 +30,8 @@ export class VehicleDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.vehicleState.vehicle.subscribe(x=> this.vehicle = x);
+    this.vehicleState.vehicle.subscribe(x=> {this.vehicle = x;
+      this.photoService.getPhotos(x.id).subscribe(y=>this.photos = y);
+    });
   }
 }

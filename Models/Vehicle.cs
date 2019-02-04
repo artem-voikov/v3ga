@@ -24,6 +24,8 @@ namespace v3ga.Models
         public string ContactPhone { get; set; }
         public DateTime LastUpdate { get; set; }
 
+        public ICollection<Photo> Photos { get; set; } = new Collection<Photo>();
+
         public ICollection<VehicleFeature> Features { get; set; } = new Collection<VehicleFeature>();
     }
 }

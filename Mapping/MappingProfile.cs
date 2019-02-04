@@ -9,6 +9,7 @@ namespace v3ga.Mapping {
         public MappingProfile () {
 
             CreateMap<FilterResource,Filter>();
+            CreateMap<Photo, PhotoResource>();
 
             //Domain to API Resource
             CreateMap<Make, MakeResource> ();

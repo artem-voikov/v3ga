@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Protocols;
 using v3ga.Infrastructure;
+using v3ga.Models;
 using v3ga.Persistence;
 
 namespace v3ga
@@ -27,9 +28,11 @@ namespace v3ga
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<PhotoSettings>(Configuration.GetSection("PhotoSettings"));
             services.AddAutoMapper();
             services.AddScoped<IVehicleRepository,VehicleRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IPhotoRepository, PhotoRepository>();
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

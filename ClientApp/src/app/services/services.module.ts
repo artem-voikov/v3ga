@@ -4,6 +4,8 @@ import { VehicleService } from './vehicle.service';
 import { HttpModule } from '@angular/http';
 import { MyHelper } from './myHelper';
 import { VehicleState } from './VehicleState';
+import { PhotoService } from './photo.service';
+import { ProgressService } from './progress.service';
 
 @NgModule({
   imports: [
@@ -11,6 +13,6 @@ import { VehicleState } from './VehicleState';
     HttpModule
   ],
   declarations: [],
-  providers: [VehicleService, MyHelper, VehicleState]
+  providers: [VehicleService, MyHelper, VehicleState, PhotoService, ProgressService]
 })
 export class ServicesModule { }
