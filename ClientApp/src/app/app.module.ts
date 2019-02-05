@@ -1,5 +1,6 @@
 import { browser } from 'protractor';
 // import { AppErrorHandler } from './AppErrorHandler';
+import { BrowserXhrWithProgressService } from './services/progress.service';
 import { ServicesModule } from './services/services.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler, Injectable } from '@angular/core';
@@ -20,6 +21,7 @@ import { appRoutes } from './app-routes';
 import { VehiclesOverviewComponent } from './components/vehicles-overview/vehicles-overview.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { AppErrorHandler } from './AppErrorHandler';
+import { BrowserXhr } from '@angular/http';
 
 Sentry.init({
   dsn: 'https://2ea8f4977db64fb9bbd416a807332f09@sentry.io/1327135'
@@ -43,7 +45,8 @@ Sentry.init({
     RouterModule.forRoot(appRoutes),
   ],
   providers: [
-    { provide: ErrorHandler, useClass: AppErrorHandler }
+    { provide: ErrorHandler, useClass: AppErrorHandler },
+    { provide: BrowserXhr, useClass: BrowserXhrWithProgressService},
   ],
   bootstrap: [AppComponent]
 })

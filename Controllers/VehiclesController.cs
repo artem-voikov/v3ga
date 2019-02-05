@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -26,6 +27,7 @@ namespace v3ga.Controllers {
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateVehicle ([FromBody] SaveVehicleResource vehicleResource) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -47,6 +49,7 @@ namespace v3ga.Controllers {
         }
 
         [HttpPut ("{id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateVehicle (int id, [FromBody] SaveVehicleResource vehicleResource) {
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
@@ -68,6 +71,7 @@ namespace v3ga.Controllers {
         }
 
         [HttpDelete ("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteVehicle (int id) {
             var vehicle = await vehicleRepository.GetVehicle (id, includeRelated : false);
             if (vehicle == null)
@@ -103,6 +107,7 @@ namespace v3ga.Controllers {
         }
 
         [HttpGet("filtered")]
+        [Authorize]
         public async Task<IActionResult> FilteredVehicles(FilterResource filterResource)
         {
             var filter = mapper.Map<FilterResource, Filter>(filterResource);

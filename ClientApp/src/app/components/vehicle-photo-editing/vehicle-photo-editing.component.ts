@@ -1,7 +1,8 @@
-import { Component, OnInit, ElementRef, ViewChild } from "@angular/core";
+import { Component, OnInit, ElementRef, ViewChild, NgZone } from "@angular/core";
 import { PhotoService } from '../../services/photo.service';
 import { VehicleState } from '../../services/VehicleState';
 import { Photo } from '../../models/Photo';
+import { ProgressService } from '../../services/progress.service';
 
 @Component({
   selector: "app-vehicle-photo-editing",
@@ -11,8 +12,12 @@ import { Photo } from '../../models/Photo';
 export class VehiclePhotoEditingComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;
   photos: Photo[];
+  progress: any = { total: 0, percentage: 0 };
 
-  constructor(private photoservice: PhotoService, private vehicleState: VehicleState) {}
+  constructor(private photoservice: PhotoService, 
+    private vehicleState: VehicleState,
+    private progressService: ProgressService,
+    private zone: NgZone) {}
 
   ngOnInit() {
     this.photoservice.getPhotos(this.vehicleState.vehicleId).subscribe(x=> {
@@ -25,7 +30,13 @@ export class VehiclePhotoEditingComponent implements OnInit {
 
     const nativeElement: HTMLInputElement = this.fileInput.nativeElement;
     const vehicleId = this.vehicleState.vehicleId;
-    console.log([vehicleId, nativeElement]);
+
+    this.progressService.startTracking()
+      .subscribe(x=>
+        this.zone.run(() => this.progress = x),
+        null,
+        () => this.progress = null);
+
     this.photoservice.uploadFile(vehicleId, nativeElement.files[0])
       .subscribe(x => this.photos.push(x));
   }
